@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """Hash kata sandi (PBKDF2-SHA256) dan decorator otorisasi."""
 import base64
 import functools

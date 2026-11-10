@@ -1,6 +1,5 @@
 # Changelog
 
-<<<<<<< HEAD
 Semua perubahan penting proyek. Setiap entri = satu arsip zip di `releases/`.
 
 ## v1 — Katalog Service (Peserta 1)
@@ -27,10 +26,3 @@ Arsip: `releases/v3-order-service.zip`
 - Order Service: keranjang, checkout saga (reserve stok → pesanan → pembayaran), riwayat, pembatalan.
 - Kompensasi otomatis: rilis stok + pesanan DIBATALKAN, tercatat di tabel `saga_log`.
 - Integrasi pembayaran masih nonaktif (`INTEGRASI_PEMBAYARAN=0`); hook `simulasi` menguji kompensasi.
-=======
-## 1.1.0 - Katalog Service
-
-- Katalog Service: kategori, produk, stok, serta reserve/komit/rilis yang atomik.
-- Paket `common/`: konfigurasi, SQLite, JWT HS256, keamanan, klien HTTP, pabrik aplikasi.
-- Skrip `dev_up.py`, seed data contoh, dan 8 tes katalog.
->>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72

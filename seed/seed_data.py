@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 """
 Seed data (Peserta 5).
@@ -11,15 +10,6 @@ alamat), lalu opsional membuat beberapa pesanan contoh beserta pembayarannya.
     python seed/seed_data.py --reset-pesanan    # hapus keranjang demo sebelum mengisi
 
 Skrip idempoten: data yang sudah ada akan dilewati (dicocokkan lewat SKU/email).
-=======
-"""
-Mengisi Katalog Service dengan data contoh dari seed/data/katalog.json.
-
-    python seed/seed_data.py
-    python seed/seed_data.py --url http://127.0.0.1:8001
-
-Skrip idempoten: kategori dicocokkan lewat nama, produk lewat SKU.
->>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """
 import argparse
 import json
@@ -31,7 +21,6 @@ import requests
 DISK = os.path.dirname(os.path.abspath(__file__))
 AKAR = os.path.dirname(DISK)
 sys.path.insert(0, AKAR)
-<<<<<<< HEAD
 sys.path.insert(0, os.path.join(AKAR, "tests"))
 
 from base import ADMIN_EMAIL, ADMIN_SANDI, TOKEN_LAYANAN, URL  # noqa: E402
@@ -42,10 +31,6 @@ try:  # konsol Windows kadang bukan UTF-8
 except Exception:  # noqa: BLE001
     pass
 
-=======
-
-from common.jwtutil import buat_token  # noqa: E402
->>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 
 BATAS = 15
 
@@ -55,7 +40,6 @@ def baca(nama):
         return json.load(f)
 
 
-<<<<<<< HEAD
 def admin():
     r = requests.post(
         URL["pelanggan"] + "/internal/pelanggan/buat-admin",
@@ -95,46 +79,10 @@ def seed_katalog(token):
                   "kategori_id": peta_kategori.get(p["kategori"]),
                   "deskripsi": f"Produk contoh kategori {p['kategori']}"}
         r = requests.post(URL["katalog"] + "/produk", json=muatan, headers=h, timeout=BATAS)
-=======
-def kepala_admin(secret):
-    token = buat_token({"sub": "1", "email": "admin@contoh.test", "nama": "Administrator Toko",
-                        "peran": "admin"}, secret)
-    return {"Authorization": "Bearer " + token, "Content-Type": "application/json"}
-
-
-def pastikan_kategori(url, h, daftar):
-    peta = {}
-    for k in daftar:
-        r = requests.post(url + "/kategori", json=k, headers=h, timeout=BATAS)
-        if r.status_code in (200, 201):
-            peta[k["nama"]] = r.json()["data"]["id"]
-            print(f"  - kategori dibuat: {k['nama']}")
-            continue
-        for item in requests.get(url + "/kategori", timeout=BATAS).json()["data"]:
-            if item["nama"].lower() == k["nama"].lower():
-                peta[k["nama"]] = item["id"]
-                break
-        print(f"  - kategori sudah ada: {k['nama']}")
-    return peta
-
-
-def pastikan_produk(url, h, daftar, peta):
-    ada = {p["sku"] for p in requests.get(url + "/produk", params={"batas": 100, "aktif": "semua"},
-                                          timeout=BATAS).json()["data"]}
-    baru = 0
-    for p in daftar:
-        if p["sku"] in ada:
-            continue
-        muatan = {"sku": p["sku"], "nama": p["nama"], "harga": p["harga"], "stok": p["stok"],
-                  "kategori_id": peta.get(p["kategori"]),
-                  "deskripsi": f"Produk contoh kategori {p['kategori']}"}
-        r = requests.post(url + "/produk", json=muatan, headers=h, timeout=BATAS)
->>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
         if r.status_code == 201:
             baru += 1
         else:
             print(f"    ! gagal membuat {p['sku']}: {r.text[:120]}")
-<<<<<<< HEAD
     print(f"  - produk: {baru} baru, {len(data['produk']) - baru} sudah ada")
 
 
@@ -235,31 +183,6 @@ def main():
     for p2 in baca("pelanggan.json")["pelanggan"]:
         print(f"  pelanggan : {p2['email']} / {p2['kata_sandi']}")
     print("Buka http://localhost:8000  dan  http://localhost:8000/admin")
-=======
-    print(f"  - produk: {baru} baru, {len(daftar) - baru} sudah ada")
-
-
-def main():
-    p = argparse.ArgumentParser(description="Isi data contoh katalog")
-    p.add_argument("--url", default=os.environ.get("KATALOG_URL", "http://127.0.0.1:8001"))
-    p.add_argument("--secret", default=os.environ.get("JWT_SECRET",
-                                                      "dev-secret-jangan-dipakai-di-produksi"))
-    arg = p.parse_args()
-
-    try:
-        requests.get(arg.url + "/health", timeout=3).raise_for_status()
-    except requests.RequestException:
-        print(f"Katalog Service belum hidup di {arg.url}. Jalankan dulu: python scripts/dev_up.py")
-        return 1
-
-    h = kepala_admin(arg.secret)
-    data = baca("katalog.json")
-    print("Mengisi kategori...")
-    peta = pastikan_kategori(arg.url, h, data["kategori"])
-    print("Mengisi produk...")
-    pastikan_produk(arg.url, h, data["produk"], peta)
-    print("Selesai.")
->>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
     return 0
 
 

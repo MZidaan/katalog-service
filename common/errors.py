@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """Kesalahan domain yang dipetakan menjadi respons JSON konsisten."""
 
 

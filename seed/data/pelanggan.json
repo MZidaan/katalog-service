@@ -1,0 +1,23 @@
+
+{
+  "pelanggan": [
+    {
+      "email": "siti@contoh.test", "nama": "Siti Rahmawati", "kata_sandi": "rahasia123",
+      "telepon": "081200000101",
+      "alamat": { "label": "Rumah", "jalan": "Jl. Cihampelas 120", "kota": "Bandung",
+                  "provinsi": "Jawa Barat", "kode_pos": "40131" }
+    },
+    {
+      "email": "budi@contoh.test", "nama": "Budi Santoso", "kata_sandi": "rahasia123",
+      "telepon": "081200000102",
+      "alamat": { "label": "Kantor", "jalan": "Jl. Sudirman 45", "kota": "Jakarta",
+                  "provinsi": "DKI Jakarta", "kode_pos": "10220" }
+    },
+    {
+      "email": "dewi@contoh.test", "nama": "Dewi Lestari", "kata_sandi": "rahasia123",
+      "telepon": "081200000103",
+      "alamat": { "label": "Rumah", "jalan": "Jl. Kaliurang 8", "kota": "Yogyakarta",
+                  "provinsi": "DI Yogyakarta", "kode_pos": "55281" }
+    }
+  ]
+}
