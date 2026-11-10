@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """Tes Katalog Service (Peserta 1): CRUD, reserve, komit, rilis, validasi stok."""
 import unittest
 

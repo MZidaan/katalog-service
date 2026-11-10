@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 
 """
 Katalog Service (Peserta 1) — port 8001.
+=======
+"""
+Katalog Service (Peserta 1) - port 8001.
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 
 Tanggung jawab:
   * CRUD kategori dan produk.

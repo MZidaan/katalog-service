@@ -1,13 +1,22 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """
 Menjalankan seluruh tes. Bila layanan belum hidup, skrip ini menyalakannya sendiri
 (python app.py per layanan) memakai DATA_DIR sementara, lalu mematikannya kembali.
 
 Contoh:
+<<<<<<< HEAD
     python tests/run_tests.py                # semua tahap yang tersedia
     python tests/run_tests.py -v             # verbose
     python tests/run_tests.py --tanpa-boot   # pakai layanan yang sudah berjalan
     python tests/run_tests.py --layanan katalog,pelanggan
+=======
+    python tests/run_tests.py                # jalankan semua tes katalog
+    python tests/run_tests.py -v             # verbose
+    python tests/run_tests.py --tanpa-boot   # pakai layanan yang sudah berjalan
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """
 import argparse
 import os
@@ -41,10 +50,13 @@ except Exception:  # noqa: BLE001
 
 LAYANAN = [
     ("katalog", "katalog-service/app.py", 8001),
+<<<<<<< HEAD
     ("pelanggan", "pelanggan-service/app.py", 8002),
     ("order", "order-service/app.py", 8003),
     ("pembayaran", "pembayaran-service/app.py", 8004),
     ("gateway", "gateway/app.py", 8000),
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 ]
 
 
@@ -70,10 +82,13 @@ def boot(data_dir, hanya=None):
     proses = []
     lingkungan = os.environ.copy()
     lingkungan.update({"DATA_DIR": data_dir, "PYTHONPATH": AKAR, "PYTHONUNBUFFERED": "1"})
+<<<<<<< HEAD
     # Arsip tahap 3 belum membawa layanan pembayaran: matikan integrasinya agar
     # checkout tetap berjalan (kompensasi tetap diuji lewat hook simulasi).
     if not tersedia("pembayaran", "pembayaran-service/app.py"):
         lingkungan.setdefault("INTEGRASI_PEMBAYARAN", "0")
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
     for nama, berkas, port in LAYANAN:
         if hanya and nama not in hanya:
             continue
@@ -105,7 +120,11 @@ def main():
     parser = argparse.ArgumentParser(description="Runner tes tugas kelompok")
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--tanpa-boot", action="store_true", help="jangan menyalakan layanan")
+<<<<<<< HEAD
     parser.add_argument("--layanan", default="", help="daftar dipisah koma, mis. katalog,pelanggan")
+=======
+    parser.add_argument("--layanan", default="", help="nama layanan, mis. katalog")
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
     parser.add_argument("--pertahankan", action="store_true", help="biarkan layanan tetap hidup")
     arg = parser.parse_args()
 
@@ -138,7 +157,11 @@ def main():
     print(f"\nRingkasan: {jumlah} tes, {len(hasil.failures)} gagal, "
           f"{len(hasil.errors)} error, {lompat} dilewati")
     if lompat and not arg.tanpa_boot:
+<<<<<<< HEAD
         print("Tes dilewati karena layanan terkait tidak berjalan (normal untuk tahap awal).")
+=======
+        print("Tes dilewati karena layanan terkait tidak berjalan.")
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
     return 0 if hasil.wasSuccessful() else 1
 
 

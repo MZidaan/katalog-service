@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 
 """
 Basis bersama untuk seluruh tes: klien HTTP tipis, pengecekan ketersediaan layanan,
 pembuatan token admin, dan pembantu alur pesanan.
 
 Berkas ini juga dipakai skrip seed dan e2e, jadi tidak bergantung pada pytest.
+=======
+"""
+Basis bersama untuk tes katalog: klien HTTP tipis, cek kesehatan layanan, dan token admin.
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """
 import os
 import sys
@@ -20,6 +25,7 @@ from common.jwtutil import buat_token  # noqa: E402
 SEKRET = os.environ.get("JWT_SECRET", "dev-secret-jangan-dipakai-di-produksi")
 TOKEN_LAYANAN = os.environ.get("SERVICE_TOKEN", "token-antar-layanan-dev")
 ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@contoh.test")
+<<<<<<< HEAD
 ADMIN_SANDI = os.environ.get("ADMIN_SANDI", "admin12345")
 
 URL = {
@@ -32,6 +38,13 @@ URL = {
 
 _cache_admin = {}
 
+=======
+
+URL = {
+    "katalog": os.environ.get("KATALOG_URL", "http://127.0.0.1:8001"),
+}
+
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 
 def butuh_layanan(basis, detik=1.5):
     """True bila /health layanan menjawab 200 (dipakai skipUnless)."""
@@ -66,6 +79,7 @@ class Jawaban:
             return {"success": False, "error": {"kode": "BUKAN_JSON", "pesan": self._r.text[:300]}}
 
 
+<<<<<<< HEAD
 def _admin_baru():
     """Buat/ambil akun admin nyata agar token lolos verifikasi gateway."""
     bila = _cache_admin.get("data")
@@ -91,12 +105,29 @@ def _admin_baru():
 
 class ApiKlien:
     """Klien HTTP sederhana untuk satu layanan (atau gateway)."""
+=======
+def token_admin():
+    """Token admin HS256 untuk memanggil endpoint tulis katalog."""
+    return buat_token({
+        "sub": "1",
+        "email": ADMIN_EMAIL,
+        "nama": "Administrator Toko",
+        "peran": "admin",
+    }, SEKRET)
+
+
+class ApiKlien:
+    """Klien HTTP sederhana untuk Katalog Service."""
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 
     def __init__(self, basis, batas=15):
         self.basis = basis.rstrip("/")
         self.batas = batas
 
+<<<<<<< HEAD
     # ------------------------------------------------------------------ dasar
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
     @staticmethod
     def acak(n=8):
         return uuid.uuid4().hex[:n]
@@ -120,7 +151,10 @@ class ApiKlien:
     def get_raw(self, path, method="GET", json=None, params=None, headers=None, token=None):
         return self.kirim(method, path, json=json, params=params, headers=headers, token=token)
 
+<<<<<<< HEAD
     # ------------------------------------------------------------- data sukses
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
     def _data(self, jawaban):
         """Kembalikan seluruh body JSON ({success, data, meta}) bila status < 400."""
         body = jawaban.json()
@@ -142,6 +176,7 @@ class ApiKlien:
 
     # ------------------------------------------------------------------- token
     def token_admin(self):
+<<<<<<< HEAD
         return _admin_baru()
 
     def token_pelanggan(self):
@@ -198,3 +233,25 @@ class ApiKlien:
             "pembayaran_id": (tagihan or {}).get("id"),
             "total": pesanan["total"],
         }
+=======
+        return {"token": token_admin(), "pengguna": {"id": 1, "email": ADMIN_EMAIL,
+                                                     "peran": "admin"}}
+
+    def token_pelanggan(self):
+        """Token pengguna biasa, dipakai untuk menguji penolakan endpoint admin."""
+        token = buat_token({"sub": "2", "email": "uji@contoh.test", "nama": "Pembeli Uji",
+                            "peran": "pelanggan"}, SEKRET)
+        return {"token": token, "pengguna": {"id": 2, "email": "uji@contoh.test",
+                                             "peran": "pelanggan"}}
+
+    # ------------------------------------------------------- pembantu alur katalog
+    def buat_produk(self, stok=10, harga=50000, nama=None, kategori_id=None):
+        admin = self.token_admin()
+        muatan = {"nama": nama or "Produk Uji " + self.acak(), "harga": harga, "stok": stok}
+        if kategori_id:
+            muatan["kategori_id"] = kategori_id
+        return self.post("/produk", muatan, token=admin["token"])["data"]
+
+    def stok_produk(self, produk_id):
+        return self.get(f"/produk/{produk_id}")["data"]
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72

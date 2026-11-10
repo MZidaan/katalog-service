@@ -22,6 +22,7 @@ services:
       retries: 5
       start_period: 10s
 
+<<<<<<< HEAD
   pelanggan:
     build:
       context: .
@@ -78,3 +79,7 @@ volumes:
   katalog-data:
   pelanggan-data:
   order-data:
+=======
+volumes:
+  katalog-data:
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72

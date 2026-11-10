@@ -1,0 +1,31 @@
+{
+  "kategori": [
+    { "nama": "Kopi", "deskripsi": "Biji kopi dan kopi bubuk" },
+    { "nama": "Teh", "deskripsi": "Teh hitam, hijau, dan herbal" },
+    { "nama": "Alat Seduh", "deskripsi": "Peralatan manual brewing" },
+    { "nama": "Camilan", "deskripsi": "Pendamping minuman" },
+    { "nama": "Merchandise", "deskripsi": "Perlengkapan dan aksesori" }
+  ],
+  "produk": [
+    { "sku": "KOP-ARB-200", "nama": "Arabika Gayo 200g", "kategori": "Kopi", "harga": 95000, "stok": 40 },
+    { "sku": "KOP-ROB-200", "nama": "Robusta Temanggung 200g", "kategori": "Kopi", "harga": 70000, "stok": 35 },
+    { "sku": "KOP-EXP-250", "nama": "Espresso Blend 250g", "kategori": "Kopi", "harga": 110000, "stok": 25 },
+    { "sku": "KOP-TOR-200", "nama": "Toraja Sapan 200g", "kategori": "Kopi", "harga": 105000, "stok": 18 },
+    { "sku": "KOP-DRP-10", "nama": "Drip Bag 10 pcs", "kategori": "Kopi", "harga": 60000, "stok": 60 },
+    { "sku": "TEH-MEL-100", "nama": "Teh Melati Premium 100g", "kategori": "Teh", "harga": 35000, "stok": 50 },
+    { "sku": "TEH-HIJ-50", "nama": "Teh Hijau Sencha 50g", "kategori": "Teh", "harga": 48000, "stok": 30 },
+    { "sku": "TEH-CHA-20", "nama": "Chamomile 20 kantong", "kategori": "Teh", "harga": 42000, "stok": 22 },
+    { "sku": "TEH-ERL-50", "nama": "Earl Grey 50g", "kategori": "Teh", "harga": 45000, "stok": 28 },
+    { "sku": "ALT-V60-02", "nama": "V60 Dripper 02", "kategori": "Alat Seduh", "harga": 150000, "stok": 12 },
+    { "sku": "ALT-GRD-01", "nama": "Grinder Manual Baja", "kategori": "Alat Seduh", "harga": 275000, "stok": 8 },
+    { "sku": "ALT-KTL-60", "nama": "Ketel Leher Angsa 600ml", "kategori": "Alat Seduh", "harga": 320000, "stok": 6 },
+    { "sku": "ALT-FLT-100", "nama": "Kertas Filter V60 (100)", "kategori": "Alat Seduh", "harga": 40000, "stok": 45 },
+    { "sku": "ALT-SCL-01", "nama": "Timbangan Kopi Digital", "kategori": "Alat Seduh", "harga": 185000, "stok": 10 },
+    { "sku": "CAM-COO-120", "nama": "Cookies Cokelat 120g", "kategori": "Camilan", "harga": 32000, "stok": 55 },
+    { "sku": "CAM-BRN-100", "nama": "Brownies Kering 100g", "kategori": "Camilan", "harga": 38000, "stok": 40 },
+    { "sku": "CAM-KAC-150", "nama": "Kacang Panggang 150g", "kategori": "Camilan", "harga": 25000, "stok": 70 },
+    { "sku": "MER-MUG-01", "nama": "Mug Keramik 300ml", "kategori": "Merchandise", "harga": 85000, "stok": 20 },
+    { "sku": "MER-TOT-01", "nama": "Tote Bag Kanvas", "kategori": "Merchandise", "harga": 95000, "stok": 15 },
+    { "sku": "MER-APR-01", "nama": "Apron Barista", "kategori": "Merchandise", "harga": 140000, "stok": 9 }
+  ]
+}

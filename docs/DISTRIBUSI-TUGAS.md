@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Distribusi Tugas Kelompok
 
@@ -5,6 +6,14 @@ Proyek: **Toko Online Mikroservis** — 5 layanan Python/Flask + SQLite, satu AP
 dengan dua dashboard (toko & admin), dijalankan dengan Docker Compose atau skrip lokal.
 
 Periode: dibuka Senin, 2 November 2026 00:00 — tenggat Senin, 9 November 2026 00:00.
+=======
+# Distribusi Tugas Kelompok
+
+Proyek: **Toko Online Mikroservis** - 5 layanan Python/Flask + SQLite, satu API Gateway
+dengan dua dashboard (toko & admin), dijalankan dengan Docker Compose atau skrip lokal.
+
+Periode: dibuka Senin, 2 November 2026 00:00 - tenggat Senin, 9 November 2026 00:00.
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 
 | Peran | Tanggung jawab | Folder |
 |---|---|---|

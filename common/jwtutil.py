@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """JWT HS256 tanpa dependensi eksternal (hmac + hashlib + base64)."""
 import base64
 import hashlib
