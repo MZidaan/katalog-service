@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """Klien HTTP antar layanan: timeout, retry, service token, error terstruktur."""
 import time
 

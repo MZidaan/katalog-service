@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+
+"""
+Menjalankan seluruh layanan di mesin lokal tanpa Docker.
+
+    python scripts/dev_up.py                       # semua layanan yang ada
+    python scripts/dev_up.py --layanan katalog     # hanya katalog
+    python scripts/dev_up.py --data-dir data/dev   # pilih folder SQLite
+
+Tekan Ctrl+C untuk menghentikan semuanya.
+=======
 """
 Menjalankan Katalog Service di mesin lokal tanpa Docker.
 
@@ -5,6 +16,7 @@ Menjalankan Katalog Service di mesin lokal tanpa Docker.
     python scripts/dev_up.py --data-dir data/dev   # pilih folder SQLite
 
 Tekan Ctrl+C untuk menghentikan layanan.
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """
 import argparse
 import os
@@ -21,22 +33,48 @@ from base import URL, butuh_layanan  # noqa: E402
 
 LAYANAN = [
     ("katalog", "katalog-service/app.py", 8001),
+<<<<<<< HEAD
+    ("pelanggan", "pelanggan-service/app.py", 8002),
+    ("order", "order-service/app.py", 8003),
+    ("pembayaran", "pembayaran-service/app.py", 8004),
+    ("gateway", "gateway/app.py", 8000),
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 ]
 
 
 def main():
+<<<<<<< HEAD
+    p = argparse.ArgumentParser(description="Jalankan layanan toko secara lokal")
+    p.add_argument("--layanan", default="", help="mis. katalog,pelanggan")
+=======
     p = argparse.ArgumentParser(description="Jalankan Katalog Service secara lokal")
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
     p.add_argument("--data-dir", default=os.path.join(AKAR, "data", "dev"))
     p.add_argument("--tanpa-tunggu", action="store_true")
     arg = p.parse_args()
 
+<<<<<<< HEAD
+    hanya = {x.strip() for x in arg.layanan.split(",") if x.strip()} or None
     os.makedirs(arg.data_dir, exist_ok=True)
     lingkungan = os.environ.copy()
     lingkungan.update({"DATA_DIR": arg.data_dir, "PYTHONPATH": AKAR, "PYTHONUNBUFFERED": "1"})
+    if not os.path.exists(os.path.join(AKAR, "pembayaran-service", "app.py")):
+        lingkungan.setdefault("INTEGRASI_PEMBAYARAN", "0")
+=======
+    os.makedirs(arg.data_dir, exist_ok=True)
+    lingkungan = os.environ.copy()
+    lingkungan.update({"DATA_DIR": arg.data_dir, "PYTHONPATH": AKAR, "PYTHONUNBUFFERED": "1"})
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 
     proses = []
     print(f"DATA_DIR = {arg.data_dir}")
     for nama, berkas, port in LAYANAN:
+<<<<<<< HEAD
+        if hanya and nama not in hanya:
+            continue
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
         if not os.path.exists(os.path.join(AKAR, berkas)):
             continue
         log = open(os.path.join(arg.data_dir, f"{nama}.log"), "w", encoding="utf-8")
@@ -52,13 +90,23 @@ def main():
                     break
                 time.sleep(0.25)
 
+<<<<<<< HEAD
+    print("\nSiap. Dashboard: http://127.0.0.1:8000  -  Admin: http://127.0.0.1:8000/admin")
+    print("Seed data  : python seed/seed_data.py")
+    print("Tes        : python tests/run_tests.py --tanpa-boot")
+=======
     print("\nSeed data : python seed/seed_data.py")
     print("Tes       : python tests/run_tests.py --tanpa-boot")
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
     try:
         while True:
             time.sleep(1)
             if all(pr.poll() is not None for _, pr, _ in proses):
+<<<<<<< HEAD
+                print("Semua proses berhenti.")
+=======
                 print("Proses berhenti.")
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
                 break
     except KeyboardInterrupt:
         print("\nMenghentikan layanan...")

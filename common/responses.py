@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> 04eda1bd6649056beef7d88be3add86732a7ea72
 """Amplop respons JSON seragam: {success, data|error, meta, request_id}."""
 from datetime import datetime, timezone
 
